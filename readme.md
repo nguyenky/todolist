@@ -17,7 +17,8 @@
 * Done
 
 * Mysql: http://localhost:9090/
-* Server: mysql
-* Username: default
-* Pass: secret
+
+            Server: mysql
+            Username: default
+            Pass: secret
 
