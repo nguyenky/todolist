@@ -18,3 +18,11 @@ $app->router->post('/todos/{id}', 'TodoListController@edit');
  * TODO: need refactor to DELETE method  
  */
 $app->router->post('/todos/delete/{id}', 'TodoListController@destroy');
+
+/** Get calendar */
+$app->router->get('/calendar', 'TodoListController@calendar');
+
+// =========================== API ===========================
+
+/** Get list todos list */
+$app->router->get('api/todos', 'Api\TodoListController@index');

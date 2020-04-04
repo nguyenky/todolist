@@ -61,4 +61,9 @@ class TodoListController
 
         return redirect('/');
     }
+
+    public function calendar()
+    {
+        return response()->view('sites.calendar');
+    }
 }
