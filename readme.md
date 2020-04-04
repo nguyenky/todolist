@@ -15,4 +15,9 @@
             127.0.0.1	todo-list.local
 * Enter (http://todo-list.local/)
 * Done
-The first time it may take a little while to pull the images from Docker Hub and lots of confusing message printouts, but be patient. Give it some time.
+
+* Mysql: http://localhost:9090/
+* Server: mysql
+* Username: default
+* Pass: secret
+

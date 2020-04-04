@@ -24,11 +24,12 @@ export $(grep -v '^#' ${ENV_PATH} | xargs)
 
 printf "\n ****************************** Step 4: Composer install ****************************** \n"
 
-docker exec -it -u laradock -w /var/www/ todolist_workspace_1 bash composer install
+docker exec -it -u laradock -w /var/www/ todolist_workspace_1 composer install
 
 printf "\n ****************************** Step 5: Composer migrate ****************************** \n"
 
-# docker exec -it -u laradock -w /var/www/ todolist_workspace_1 bash composer install
+docker exec -it -u laradock -w /var/www/public todolist_workspace_1 php migrate.php
+
 
 cat << EOF
 
