@@ -30,6 +30,7 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -40,6 +41,12 @@
                 <td><?php echo $todo->start_date; ?></td>
                 <td><?php echo $todo->end_date; ?></td>
                 <td><?php echo $todo->status; ?></td>
+                <td style="display: flex;">
+                    <a class="btn btn-info" href="/todos/<?php echo $todo->id; ?>" role="button">Edit</a>
+                    <form method="POST" action="/todos/delete/<?php echo $todo->id; ?>">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         <?php } ?>
     </tbody>

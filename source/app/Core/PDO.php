@@ -81,6 +81,35 @@ class PDO extends Database
         return $this->conn->prepare($this->query);
     }
 
+    protected function prepareUpdateQuery(int $id)
+    {
+        $this->query = 'UPDATE ' . $this->table . ' SET '
+            . $this->renderColumnsUpdate()
+            . ' '
+            . 'Where id = ' . $id;
+
+        return $this->conn->prepare($this->query);
+    }
+
+    protected function prepareDeleteQuery(int $id)
+    {
+        $this->query = 'DELETE FROM ' . $this->table . ' Where id = ' . $id;
+
+        return $this->conn->prepare($this->query);
+    }
+
+    private function renderColumnsUpdate()
+    {
+        $values = '';
+        foreach ($this->valuesUpdate as $column => $value) {
+            $values .= empty($values)
+                ? $column . "=" . "'" . $value . "'"
+                : "," . $column . "=" . "'" . $value . "'";
+        }
+
+        return $values;
+    }
+
     private function renderKeyInsert()
     {
         $keys = '';
