@@ -10,6 +10,7 @@ class Handler
 {
     public function __invoke(Exception $exception)
     {
+        dd($exception);
         switch (true) {
             case $exception instanceof BaseException:
                 $statusCode = 400;

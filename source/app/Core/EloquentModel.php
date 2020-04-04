@@ -49,6 +49,20 @@ class EloquentModel extends PDO
     }
 
     /**
+     * Insert data to db
+     * @param array $attributes
+     * 
+     * @return array
+     */
+    public function insert(array $attributes)
+    {
+        $this->valuesInsert = $attributes;
+        $prepare = $this->prepareInsertQuery();
+        $prepare->execute();
+        return $prepare->fetchAll(\PDO::FETCH_CLASS, get_class($this));
+    }
+
+    /**
      * @return array
      */
     public function getFillables(): array

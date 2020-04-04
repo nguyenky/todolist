@@ -90,3 +90,17 @@ function isJson($string)
     json_decode($string);
     return (json_last_error() == JSON_ERROR_NONE);
 }
+
+if (!function_exists('redirect')) {
+    /**
+     * Redirect
+     *
+     */
+    function redirect(string $page)
+    {
+        $root = getenv('APP_URL') ?? null;
+
+        header("Location: " . $root . $page);
+        exit();
+    }
+}

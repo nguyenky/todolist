@@ -69,6 +69,40 @@ class PDO extends Database
         return $this->conn->prepare($this->query);
     }
 
+    protected function prepareInsertQuery()
+    {
+        $this->query = "INSERT INTO "
+            . $this->table  . "("
+            . $this->renderKeyInsert() . ")"
+            . " Values "
+            . "("
+            . $this->renderValuesInsert() . ")";
+
+        return $this->conn->prepare($this->query);
+    }
+
+    private function renderKeyInsert()
+    {
+        $keys = '';
+        foreach (array_keys($this->valuesInsert) as $key) {
+            $keys .= empty($keys) ? $key : ',' . $key;
+        }
+
+        return $keys;
+    }
+
+    private function renderValuesInsert()
+    {
+        $values = '';
+        foreach (array_values($this->valuesInsert) as $value) {
+            $values .= empty($values)
+                ? "'" .  $value . "'"
+                : ',' . "'" . $value . "'";
+        }
+
+        return $values;
+    }
+
     private function renderConditions()
     {
         $conditions = '';

@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 namespace App\Database;
 
 use App\Core\PDO;
@@ -28,7 +27,7 @@ class Migration extends PDO
     {
         $this->query = 'CREATE TABLE todos (id INT UNSIGNED AUTO_INCREMENT NOT NULL,
                             name VARCHAR(100) NOT NULL,
-                            start_data DATE NOT NULL,
+                            start_date DATE NOT NULL,
                             end_date DATE NOT NULL,
                             status VARCHAR(20) NOT NULL,
                             PRIMARY KEY(id)) DEFAULT CHARACTER

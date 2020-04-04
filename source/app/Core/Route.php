@@ -5,7 +5,8 @@ namespace App\Core;
 class Route
 {
     private $routes = [
-        'GET' => []
+        'GET' => [],
+        'POST' => [],
     ];
 
     /**
@@ -49,6 +50,19 @@ class Route
             };
         }
         $this->routes['GET'][] = ['paths' => $uri, 'handler' => $handler, 'variables' => $variables];
+    }
+
+    public function post($uri, $handler)
+    {
+        $uri = array_filter(explode('/', $uri));
+
+        $variables = [];
+        foreach ($uri as $index => $uri_partial) {
+            if (preg_match("/{(\w+)}/", $uri_partial, $variable)) {
+                $variables[$variable[1]] = $index;
+            };
+        }
+        $this->routes['POST'][] = ['paths' => $uri, 'handler' => $handler, 'variables' => $variables];
     }
 
     public function getRoutesList($method)

@@ -22,3 +22,6 @@
             Username: default
             Pass: secret
 
+## Check linting
+* running `docker exec -it -u laradock -w /var/www/ todolist_workspace_1 composer lint`
+

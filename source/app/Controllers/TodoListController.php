@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Database\Migrate;
+use App\Core\Request;
 use App\Models\Todo;
 
 class TodoListController
@@ -22,5 +22,14 @@ class TodoListController
         $todos = $this->model->get();
 
         return response()->view('sites.todos', ['todos' => $todos]);
+    }
+
+    public function store(Request $request)
+    {
+        $params = $request->only($this->model->getFillables());
+
+        $this->model->insert($params);
+
+        return redirect('/');
     }
 }
