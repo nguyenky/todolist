@@ -11,6 +11,6 @@ class TodoListControllerTest extends BaseTestCase
         $foo = true;
         $this->assertTrue($foo);
 
-        // TODO: testing 
+        // TODO: testing list todos
     }
 }

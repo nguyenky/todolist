@@ -3,6 +3,7 @@
 namespace Tests;
 
 use App\Core\PDO;
+use App\Exceptions\ValidateException;
 use PHPUnit\Framework\TestCase;
 
 class BaseTestCase extends TestCase
@@ -23,5 +24,10 @@ class BaseTestCase extends TestCase
         );
 
         $pdo->connect();
+    }
+
+    public function expectValidationException()
+    {
+        $this->expectException(ValidateException::class);
     }
 }

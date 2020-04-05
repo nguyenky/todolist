@@ -20,6 +20,9 @@ class TodoListControllerTest extends BaseTestCase
 
     public function testGetTodosList()
     {
-        // TODO: test todos list
+        $foo = true;
+        $this->assertTrue($foo);
+
+        // TODO: testing api list todos
     }
 }

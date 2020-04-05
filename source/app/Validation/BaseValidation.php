@@ -42,6 +42,8 @@ abstract class BaseValidation
                 }
             }
         }
+
+        return true;
     }
 
     private function required($key, $value)
