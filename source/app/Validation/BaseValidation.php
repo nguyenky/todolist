@@ -19,6 +19,11 @@ abstract class BaseValidation
 
     abstract public function validator():array;
 
+    /**
+     * Handle validation
+     *
+     * @return bool|ValidateException
+     */
     public function handle()
     {
         $this->validators = $this->validator();
@@ -46,57 +51,95 @@ abstract class BaseValidation
         return true;
     }
 
-    private function required($key, $value)
+    /**
+     * Check validate value request
+     * @param string $key
+     * @param mixed $value
+     *
+     * @return bool|string
+     */
+    private function required(string $key, $value)
     {
         if ($value !== null) {
-            return;
+            return false ;
         }
 
         return 'Attribute ' . $key . ' must required';
     }
 
+    /**
+     * Check validate value is string
+     * @param string $key
+     * @param mixed $value
+     *
+     * @return bool|string
+     */
     private function string($key, $value)
     {
         if (is_string($value)) {
-            return;
+            return false;
         }
 
         return 'Attribute ' . $key . ' must be string';
     }
 
+    /**
+     * Check validate min length
+     * @param string $key
+     * @param mixed $value
+     * @param integer $rule
+     *
+     * @return bool|string
+     */
     private function minLength($key, $value, $rule)
     {
         if (!$value) {
-            return;
+            return false;
         }
 
         if (strlen($value) >= $rule) {
-            return;
+            return false;
         };
 
         return 'Attribute ' . $key . ' must min ' . $rule . ' characters';
     }
 
+    /**
+     * Check validate max length
+     * @param string $key
+     * @param mixed $value
+     * @param integer $rule
+     *
+     * @return bool|string
+     */
     private function maxLength($key, $value, $rule)
     {
         if (!$value) {
-            return;
+            return false;
         }
 
         if (strlen($value) <= $rule) {
-            return;
+            return false;
         };
 
         return 'Attribute ' . $key . ' must max ' . $rule . ' characters';
     }
 
+    /**
+     * Check validate value is date
+     * @param string $key
+     * @param mixed $date
+     * @param string $format
+     *
+     * @return bool|string
+     */
     private function date($key, $date, $format = 'Y-m-d')
     {
         $d = \DateTime::createFromFormat($format, $date);
         $validate = $d && $d->format($format) === $date;
 
         if ($validate) {
-            return;
+            return false;
         }
 
         return 'Attribute ' . $key . ' must be date';
