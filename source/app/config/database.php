@@ -2,7 +2,7 @@
 
 return [
     'connection' => [
-        'host' => env('DB_CONNECTION'),
+        'host' => env('DB_HOST'),
         'database' => env('DB_DATABASE'),
         'password' => env('DB_PASSWORD'),
         'username' => env('DB_USERNAME'),

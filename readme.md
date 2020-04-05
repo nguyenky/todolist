@@ -32,15 +32,22 @@ you cannot
 * Update your host config
             
             127.0.0.1	todo-list.local
+* Run migrate `composer migrate` // if not complete, please run again
+* 
 * Enter (http://todo-list.local/)
 * Done
 
+## Check linting
+* running `docker exec -it -u laradock -w /var/www/ todolist_workspace_1 composer lint`
+
+## Setup Testing 
 * Mysql: http://localhost:9090/
 
             Server: mysql
-            Username: default
-            Pass: secret
+            Username: root
+            Pass: root
+* Create new database testing 
 
-## Check linting
-* running `docker exec -it -u laradock -w /var/www/ todolist_workspace_1 composer lint`
+          database name: `testing`
+
 

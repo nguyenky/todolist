@@ -40,7 +40,7 @@ class PDO extends Database
                 \PDO::ATTR_EMULATE_PREPARES   => false,
             ];
             $this->conn = $this->conn ?? new \PDO(
-                "mysql:host=$this->server_name;dbname=$this->db_name;charset=$this->charset",
+                "mysql:host=$this->server_name;dbname=$this->db_name",
                 $this->username,
                 $this->password,
                 $options

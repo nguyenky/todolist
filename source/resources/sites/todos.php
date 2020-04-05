@@ -2,15 +2,15 @@
 <form method="POST" action="/todos">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="type" class="form-control" id="name" name="name">
+        <input type="type" class="form-control" id="name" name="name" required>
     </div>
     <div class="form-group">
         <label for="pwd">Start Date</label>
-        <input type="type" class="form-control" id="start" placeholder="yyyy-m-d" name="start_date">
+        <input type="type" class="form-control" id="start" placeholder="yyyy-m-d" name="start_date" required>
     </div>
     <div class="form-group">
         <label for="pwd">End Date</label>
-        <input type="type" class="form-control" id="end" placeholder="yyyy-m-d" name="end_date">
+        <input type="type" class="form-control" id="end" placeholder="yyyy-m-d" name="end_date" required>
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Example select</label>

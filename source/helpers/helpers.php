@@ -18,8 +18,8 @@ if (!function_exists('config')) {
     function config($path)
     {
         $path_arr = explode('.', $path);
-        if ($path_arr[0] && $path_arr[1] && file_exists('../app/config/' . $path_arr[0] . '.php')) {
-            $config = require '../app/config/' . $path_arr[0] . '.php';
+        if ($path_arr[0] && $path_arr[1] && file_exists(__DIR__ . '/../app/config/' . $path_arr[0] . '.php')) {
+            $config = require __DIR__ . '/../app/config/' . $path_arr[0] . '.php';
             $path_count = count($path_arr);
             $cur_arr = $config;
 

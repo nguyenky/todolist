@@ -18,13 +18,27 @@ class Migration extends PDO
 
     public function __invoke()
     {
-        $prepare = $this->createTodotable();
-        $prepare->execute();
-        $prepare->fetchAll(\PDO::FETCH_CLASS, get_class($this));
+        $query = $this->createTodotable();
+        
+        if ($query) {
+            $this->perform($query);
+        }
+    }
+
+    private function perform($query)
+    {
+        $query->execute();
+        return $query->fetchAll(\PDO::FETCH_CLASS, get_class($this));
     }
 
     protected function createTodotable()
     {
+        $query = $this->conn->prepare('SHOW TABLES LIKE "todos"');
+
+        if (!empty($this->perform($query))) {
+            return;
+        }
+
         $this->query = 'CREATE TABLE todos (id INT UNSIGNED AUTO_INCREMENT NOT NULL,
                             name VARCHAR(100) NOT NULL,
                             start_date DATE NOT NULL,

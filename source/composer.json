@@ -32,6 +32,9 @@
         ],
         "test": [
             "php bin/phpunit"
+        ],
+        "migrate": [
+            "cd public/ && php migrate.php"
         ]
     },
     "require-dev": {
