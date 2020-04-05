@@ -10,7 +10,6 @@ class Handler
 {
     public function __invoke(Exception $exception)
     {
-        dd($exception);
         switch (true) {
             case $exception instanceof BaseException:
                 $statusCode = 400;
@@ -22,6 +21,11 @@ class Handler
                 $type = 'HttpException';
                 $message = $exception->getMessage();
                 break;
+            case $exception instanceof ValidateException:
+                $statusCode = 403;
+                $type = 'ValidateException';
+                $message = $exception->getMessage();
+                break;
             default:
                 $message = $exception->getMessage();
                 $statusCode = 500;
@@ -29,11 +33,11 @@ class Handler
         }
 
 
-        if (!isApi()) {
-            include_once realpath('../resources/errors/404.php');
+        // if (!isApi()) {
+        //     include_once realpath('../resources/errors/404.php');
 
-            die();
-        }
+        //     die();
+        // }
 
         $json = new Json(
             json_encode(

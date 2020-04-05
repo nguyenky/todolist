@@ -7,7 +7,7 @@ You need a web system to manage your work named
 * Functions to Add, Edit, Delete Work. A work includes information of “Work Name”, “Starting Date”, “EndingDate” and “Status” (Planning, Doing, Complete) 
 * Function to show the works on a calendar view with: Date, Week, Month (can use third-party library) 
 
-## REQUES
+## REQUEST
 *  To do with PHP programming language follows MVC. 
 PLEASE DO NOT USE ANY FRAMEWORK
 *  To use coding convention follows PSR
@@ -33,7 +33,6 @@ you cannot
             
             127.0.0.1	todo-list.local
 * Run migrate `composer migrate` // if not complete, please run again
-* 
 * Enter (http://todo-list.local/)
 * Done
 

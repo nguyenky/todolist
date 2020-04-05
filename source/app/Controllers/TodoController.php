@@ -4,8 +4,10 @@ namespace App\Controllers;
 
 use App\Core\Request;
 use App\Models\Todo;
+use App\Validation\Todo\CreateTodoValidation;
+use App\Validation\Todo\UpdateTodoValidation;
 
-class TodoListController
+class TodoController
 {
     /**
      * @var Todo $model
@@ -28,6 +30,9 @@ class TodoListController
     {
         $params = $request->only($this->model->getFillables());
 
+        /** Handle validate params */
+        (new CreateTodoValidation($params))->handle();
+
         $this->model->insert($params);
 
         return redirect('/');
@@ -47,6 +52,9 @@ class TodoListController
         $id = (int) $request->getVariables()['id'] ?? null;
 
         $params = $request->only($this->model->getFillables());
+
+        /** Handle validate params */
+        (new UpdateTodoValidation($params))->handle();
 
         $this->model->update($id, $params);
 
