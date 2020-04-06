@@ -49,4 +49,4 @@ you cannot
 
           database name: `testing`
 
-
+* Run test `composer test`
