@@ -144,9 +144,4 @@ class PDO extends Database
         }
         return $conditions;
     }
-
-    public function __call($funName, $arguments)
-    {
-        return $this->conn[$funName]($arguments);
-    }
 }
